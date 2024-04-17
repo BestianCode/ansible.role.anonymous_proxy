@@ -1,0 +1,61 @@
+---
+
+- name: Create proxy-users group
+  group:
+    name: proxy-users
+    system: no
+    state: present
+
+- name: Install proxy
+  ansible.builtin.package:
+    name: squid
+    state: present
+    autoremove: yes
+
+- name: Deploy templates
+  template:
+    src: "{{item.src}}"
+    dest: "{{item.dest}}"
+    mode: "{{item.mode}}"
+    owner: "{{item.owner}}"
+    group: "{{item.group}}"
+    decrypt: "{{item.decrypt}}"
+  with_items:
+    - { src: "squid.conf.j2", dest: "{{etcDirectory}}/squid/squid.conf", mode: "0644", owner: "root", group: "{{rootGroup}}", decrypt: "no" }
+
+- name: Create Proxy users
+  user:
+    name: "{{ item.user }}"
+    comment: "{{ item.user }} proxy user"
+    password: "{{ item.password | password_hash('sha512') }}"
+    group: proxy-users
+    shell: /sbin/nologin
+    home: "/nonexistent"
+    create_home: no
+  with_items:
+  - "{{ proxyUsers }}"
+  when: proxyUsers is defined
+
+- name: Start proxy server
+  ansible.builtin.service:
+    name: squid
+    state: started
+    enabled: yes
+
+- name: ReStart proxy server
+  ansible.builtin.service:
+    name: squid
+    state: restarted
+    enabled: yes
+  when: squid_restart is defined and squid_restart=="yes"
+
+- name: Service massage
+  debug:
+    msg: "You can use --extra-vars='squid_restart=yes' to restart Squid service"
+
+- name: Check squid status
+  shell: service squid status
+  register: sOut
+
+- debug:
+    var: sOut.stdout_lines
