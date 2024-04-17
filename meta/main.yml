@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: anonymous_proxy
   author: Oleg Smirnov
   description: Squid anonymous proxy with basic authentication
 
