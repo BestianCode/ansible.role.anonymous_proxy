@@ -11,7 +11,7 @@ For more information on default variables, please refer to the `defaults/main.ym
 You can install this collection using the `ansible-galaxy` command:
 
 ```bash
-ansible-galaxy role install bestiancode.anonymous_proxy
+ansible-galaxy role install BestianCode.anonymous_proxy
 ```
 
 Alternatively, you can create a `requirements.yml` file and use it to install all collections and roles at once:
@@ -28,10 +28,10 @@ collections:
   - name: bestiancode.sysadmin
 
 roles:
-  - name: bestiancode.anonymous_proxy
+  - name: BestianCode.anonymous_proxy
 ```
 
 ## URLs
 
 - **GitHub**: https://github.com/BestianCode/ansible.role.anonymous_proxy
-##- **Galaxy**: https://galaxy.ansible.com/ui/repo/published/bestiancode/sysadmin
+- **Galaxy**: https://galaxy.ansible.com/ui/standalone/roles/BestianCode/anonymous_proxy

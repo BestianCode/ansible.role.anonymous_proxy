@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: anonymous_proxy
+  namespace: bestiancode
   author: Oleg Smirnov
   description: Squid anonymous proxy with basic authentication
 
