@@ -2,6 +2,6 @@
 # defaults file for bestiancode.anonymous_proxy
 
 squidTport: 3128
-socksUsers:
+proxyUsers:
   - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
   - { user: "user2", password: "gyuv56dFGCrcghgcv6FF" }
