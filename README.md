@@ -1,6 +1,6 @@
 # Role Description
 
-This Ansible role installs and configures an anonymous proxy server on a FreeBSD or Linux server.
+This Ansible role automates the setup of an authenticated anonymous proxy server on FreeBSD or Linux.
 
 ## Default Variables
 
