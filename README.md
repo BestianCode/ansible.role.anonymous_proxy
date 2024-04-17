@@ -31,6 +31,41 @@ roles:
   - name: bestiancode.anonymous_proxy
 ```
 
+## Usage
+
+* Add `--extra-vars='squid_restart=yes'` if you need to restart the Squid service.
+* Don't forget to open the firewall ports for the proxy server.
+* Before using these roles, make sure to look at the default variables!
+
+Here's a sample `inventory`:
+
+```ini
+squidTport: 45678
+proxyUsers:
+  - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
+  - { user: "user2", password: "gyuv56dFGCrcghgcv6FF" }
+```
+
+And a sample `playbook`:
+
+```yaml
+#...
+# - other constructions can be here
+#...
+
+- hosts:
+    - vpn
+  become: true
+  tags:
+    - vpn
+  roles:
+    - bestiancode.anonymous_proxy
+
+#...
+# - other constructions can be here
+#...
+```
+
 ## URLs
 
 - **GitHub**: https://github.com/BestianCode/ansible.role.anonymous_proxy
