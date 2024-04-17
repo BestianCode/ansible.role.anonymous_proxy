@@ -21,12 +21,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: export
-#      - uses: actions/setup-python@v5
-#        with:
-#          python-version: '3.x'
-#      - run: pip install ansible
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: pip install ansible
       - run: |
           REPO_NAME=${GITHUB_REPOSITORY#*/}
           TAG_NAME=${GITHUB_REF#refs/tags/}
-          echo ansible-galaxy role import --branch $TAG_NAME --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
+          ansible-galaxy role import --branch $TAG_NAME --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
