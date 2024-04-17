@@ -28,4 +28,5 @@ jobs:
 #      - run: pip install ansible
       - run: |
           REPO_NAME=${GITHUB_REPOSITORY#*/}
-          echo ansible-galaxy role import --branch X --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo ansible-galaxy role import --branch $TAG_NAME --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
