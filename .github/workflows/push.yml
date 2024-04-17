@@ -2,16 +2,12 @@ name: Push to Galaxy
 
 env:
   ANSIBLE_GALAXY_TOKEN: ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
-  GitUser: BestianCode
-  GitRepo: ansible.role.anonymous_proxy
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
   push:
-    branches:
-      - master
+    tags:
+      - "*"
 
 jobs:
   push:
@@ -30,5 +26,6 @@ jobs:
 #        with:
 #          python-version: '3.x'
 #      - run: pip install ansible
-#      - run: |
-#          ansible-galaxy role import --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ env.GitUser }} ${{ env.GitRepo }}
+      - run: |
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          echo ansible-galaxy role import --branch X --token ${{ env.ANSIBLE_GALAXY_TOKEN }} ${{ github.repository_owner }} $REPO_NAME
