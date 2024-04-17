@@ -1,6 +1,11 @@
 ---
 # defaults file for bestiancode.anonymous_proxy
 
+etcDirectory: /etc
+# FreeBSD: /usr/local/etc
+rootGroup: root
+# FreeBSD: wheel
+
 squidTport: 3128
 proxyUsers:
   - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
