@@ -21,8 +21,8 @@
     group: "{{item.group}}"
     decrypt: "{{item.decrypt}}"
   with_items:
-    - { src: "squid.conf.j2",    dest: "{{etcDirectory}}/squid/squid.conf",   mode: "0644", owner: "root", group: "{{rootGroup}}", decrypt: "no" }
-    - { src: "sudoers.proxy.j2", dest: "{{etcDirectory}}/sudoers.d/20-proxy", mode: "0440", owner: "root", group: "{{rootGroup}}", decrypt: "no" }
+    - { src: "squid.conf.j2",    dest: "/etc/squid/squid.conf",   mode: "0644", owner: "root", group: "root", decrypt: "no" }
+    - { src: "sudoers.proxy.j2", dest: "/etc/sudoers.d/20-proxy", mode: "0440", owner: "root", group: "root", decrypt: "no" }
 
 - name: Create Proxy users
   user:
