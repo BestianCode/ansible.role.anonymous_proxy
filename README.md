@@ -8,9 +8,14 @@ For more information on default variables, please refer to the `defaults/main.ym
 
 ## Installation
 
-You can install this collection using the `ansible-galaxy` command:
+* __This role should be used together with ansible-galaxy collection bestiancode.sysadmin__
+* Galaxy: https://galaxy.ansible.com/ui/repo/published/bestiancode/sysadmin/
+* GitHub: https://github.com/BestianCode/ansible.collection.sysadmin#
+
+You can install this collection and role using the `ansible-galaxy` command:
 
 ```bash
+ansible-galaxy collection install bestiancode.sysadmin
 ansible-galaxy role install bestiancode.anonymous_proxy
 ```
 
@@ -49,9 +54,14 @@ proxyUsers:
 And a sample `playbook`:
 
 ```yaml
-#...
-# - other constructions can be here
-#...
+- hosts:
+    - all
+  become: true
+  tags:
+    - basic
+    - init
+  roles:
+    - bestiancode.sysadmin.initial_setup
 
 - hosts:
     - vpn
