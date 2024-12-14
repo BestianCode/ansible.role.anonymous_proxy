@@ -40,7 +40,7 @@
 - name: Start proxy server
   ansible.builtin.service:
     name: squid
-    state: started
+    state: restarted
     enabled: yes
 
 - name: ReStart proxy server
