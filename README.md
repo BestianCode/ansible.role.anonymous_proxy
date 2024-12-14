@@ -45,8 +45,8 @@ roles:
 Here's a sample `inventory`:
 
 ```ini
-squidTport: 45678
-proxyUsers:
+squid_port: 45678
+squid_users:
   - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
   - { user: "user2", password: "gyuv56dFGCrcghgcv6FF" }
 ```

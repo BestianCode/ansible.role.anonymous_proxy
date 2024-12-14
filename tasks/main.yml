@@ -34,8 +34,8 @@
     home: "/nonexistent"
     create_home: no
   with_items:
-  - "{{ proxyUsers }}"
-  when: proxyUsers is defined
+  - "{{ squid_users }}"
+  when: squid_users is defined
 
 - name: Start proxy server
   ansible.builtin.service:
