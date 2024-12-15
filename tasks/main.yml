@@ -33,9 +33,11 @@
     shell: /sbin/nologin
     home: "/nonexistent"
     create_home: no
-  with_items:
-  - "{{ squid_users }}"
-  when: squid_users is defined
+  loop: "{{ squid_users }}"
+  when:
+    - item.user is defined
+    - item.password is defined
+    - squid_users is defined
 
 - name: Start proxy server
   ansible.builtin.service:
