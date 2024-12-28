@@ -5,3 +5,15 @@ squid_port: 63128
 squid_users:
   - { user: "user1", password: "g7843bgb78ygyFTD56fv" }
   - { user: "user2", password: "gyuv56dFGCrcghgcv6FF" }
+
+#
+# If you want to allow some domains to be accessed through the proxy without authentication
+# you can specify them in the following variables.
+#
+#squid_allow_hosts:
+#  - my.domain.com
+#  - my.other.domain.com
+#
+#squid_allow_ports_for_allowed_hosts:
+#  - 80
+#  - 443
