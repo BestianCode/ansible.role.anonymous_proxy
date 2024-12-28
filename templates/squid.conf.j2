@@ -4,7 +4,7 @@ auth_param basic realm Ausweis bitte bereithalten!
 auth_param basic credentialsttl 24 hours
 acl auth_users proxy_auth REQUIRED
 
-{% if squid_allow_hosts is defined && squid_allow_ports_for_allowed_hosts is defined %}
+{% if squid_allow_hosts is defined and squid_allow_ports_for_allowed_hosts is defined %}
 {% for x in squid_allow_hosts %}
 acl no_auth_host dstdomain {{x}}
 {% endfor %}
